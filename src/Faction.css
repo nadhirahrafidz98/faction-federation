@@ -149,7 +149,7 @@ body{
   
   /* Stretch main-cont to entire viewport for background purpose */
   .main-cont{
-    height:100%;
+    /* height:100%; */
     padding: 3.1rem 4rem 5rem 4rem;
   }
 
