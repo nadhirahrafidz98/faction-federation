@@ -1,25 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import { Faction } from './Faction';
+import { Backend } from './Backend';
+import { Trading } from './Trading';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+} from "react-router-dom";
 
-function App() {
+function App(props) {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/rivia20" element={ <Faction name="Rivia" id="1"/>}/>
+        <Route path="/althea9" element={ <Faction name="Althea" id="2"/>}/>
+        <Route path="/sudaria24" element={ <Faction name="Sudaria" id="3"/>}/>
+        <Route path="/redania2" element={ <Faction name="Redania" id="4"/>}/>
+        <Route path="/aeri14" element={ <Faction name="Aeri" id="5"/>}/>
+        <Route path="/backend" element={ <Backend/>}/>
+        <Route path="/trade" element={ <Trading/>}/>
+      </Routes>
+  </Router>
   );
 }
-
 export default App;
+
+
+
+
