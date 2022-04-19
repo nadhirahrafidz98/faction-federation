@@ -1,5 +1,5 @@
 import './Faction.css';
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Population } from './components/Population';
 import { Resources } from './components/Resources';
 import { Coins } from './components/Coins';
@@ -30,9 +30,9 @@ const Faction = (props) => {
           console.log(e);
   }}
 
-  useEffect(() => {
-    callRequests()
-  }, [])
+  // useEffect(() => {
+  //   callRequests()
+  // }, [])
 
   const getFactionName = (id) => {
     switch(id){
@@ -49,6 +49,8 @@ const Faction = (props) => {
       default:
         return "";
     }}
+
+  callRequests()
 
   return (
     <div class={`main-cont main-bg-${props.id}`}>
