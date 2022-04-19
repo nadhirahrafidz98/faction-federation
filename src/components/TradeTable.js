@@ -120,7 +120,7 @@ const TradeTable = (props) => {
             <div class="card-body">
                 <h5 class="card-title im-fell-font font-25">{props.resource}</h5>
                 <h6 class="spectral-font">{`Selling: ${numberWithCommas(props.quantity)} units`}</h6>
-                <h6 class="spectral-font">{`Average Market Value: ${numberWithCommas(props.market_val)} Sols`}</h6>
+                <h6 class="spectral-font">{`Market Value per Unit: ${numberWithCommas(props.market_val)} Sols`}</h6>
                 <div class="row spectral-font">
                     <button class="btn btn-warning btn-block button-trade" onClick={handleButtonTrade}><strong>Buy</strong></button>
                 </div>
@@ -158,7 +158,7 @@ const TradeTable = (props) => {
 
                     <div class="col-6 padding-alignment" id="trade-sender-div">
                     <label htmlFor="trade-key-input">Buyer's Trade Key:</label>
-                        <input class="form-control padding-alignment" id="trade-key-input" onBlur={validateKey}></input>{
+                        <input class="form-control padding-alignment" id="trade-key-input" onBlur={validateKey} type='password'></input>{
                             keyMatch === -1 ? <p id="false-key"><i>Incorrect Trade Key</i></p> : ""
                         }
                     </div>
@@ -170,7 +170,7 @@ const TradeTable = (props) => {
                         <h6><strong>Your Offer</strong></h6>
                         <div class="side-units-div">
                             <input class="form-control" id="trade-request-qty"></input>
-                            <h6>coins</h6>
+                            <h6>Sols</h6>
                         </div>  
                     </div>
 
