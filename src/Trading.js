@@ -90,8 +90,7 @@ const Trading = () => {
       </div>
 
       <div class="container trade-cont">
-        <div class="nav-cont body-font-trade">
-          {
+        <div class="nav-cont body-font-trade">{
             factions.map((faction) => {
               return(
                   <button class="btn btn-lg btn-outline-secondary trade-nav-btn" onClick={handleClick} value={faction[1]}>{faction[0]}</button>

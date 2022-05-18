@@ -10,12 +10,6 @@ const TradeRequest = (props) => {
         return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     }
 
-    // const animationOut = (id) => { new Promise((resolve, reject) => {
-    //     $('#'.concat(id)).removeClass(['animate__animated animate__bounceIn']);
-    //     $('#'.concat(id)).addClass(['animate__animated', 'animate__backOutDown']);
-    //     resolve('Animation ended');
-    // })};
-
     const handleReject = async() => {
         const button_id = '#accept'.concat(props.id)
         $(button_id).attr("disabled", true);
@@ -28,9 +22,6 @@ const TradeRequest = (props) => {
                 if(res.status === 200){
                     console.log("Props id", props.id);
                     props.callback();
-                    // animationOut(props.id).then(() =>{
-                    //     return props.callback();
-                    // })
                 }; 
             }).catch((error) => {
                 console.log("Reject trade error", error)
@@ -51,9 +42,6 @@ const TradeRequest = (props) => {
             if(res.status === 200){
                 console.log("Props id", props.id);
                 props.callback();
-                // animationOut(props.id).then(() =>{
-                //     props.callback();
-                // })
             }
         } catch(e) {
             console.log(e);}

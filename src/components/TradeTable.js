@@ -3,6 +3,8 @@ import './styles.css';
 import Modal from 'react-bootstrap/Modal'
 import axios from 'axios';
 import $ from 'jquery';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+
 
 // prop is faction ID
 const TradeTable = (props) => {
@@ -43,15 +45,6 @@ const TradeTable = (props) => {
     useEffect(() => {
         callResource(senderFaction);
     }, [senderFaction])
-
-    // Get sender's selected resource quantity
-    const handleSelectResource = (event) => {
-        const resource = event.target.value;
-        const maxQty = senderResources.filter((item) => {
-            return item.rsrcName === resource
-        })[0].rsrcQty; 
-        setSenderResourceQty(maxQty); 
-    }
 
     const handleButtonTrade = async() => {
         setShow(true)
@@ -116,7 +109,14 @@ const TradeTable = (props) => {
     return (
         <div>
         <div class="card card-cont">
-            <img class="card-img-top" src={"/trade/".concat(props.resource).concat(".jpeg")} alt={"Image of ".concat(props.resource)}/>
+            <LazyLoadImage
+            effect="blur"
+            alt={"Image of ".concat(props.resource)}
+            height={200}
+            width={295}
+            src={"/trade/".concat(props.resource).concat("-min.jpeg")}>
+            </LazyLoadImage>
+            {/* <img class="card-img-top" src={"/trade/".concat(props.resource).concat("-min.jpeg")} alt={"Image of ".concat(props.resource)}/> */}
             <div class="card-body">
                 <h5 class="card-title im-fell-font font-25">{props.resource}</h5>
                 <h6 class="spectral-font">{`Selling: ${numberWithCommas(props.quantity)} units`}</h6>
