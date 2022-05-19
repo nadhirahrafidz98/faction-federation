@@ -88,13 +88,13 @@ const TradeTable = (props) => {
     return (
         <div>
         <div class="card card-cont">
-            {/* <LazyLoadImage
+            <LazyLoadImage
             effect="blur"
             alt={"Image of ".concat(props.resource)}
             height={200}
             width={295}
             src={"/trade/".concat(props.resource).concat("-min.jpeg")}>
-            </LazyLoadImage> */}
+            </LazyLoadImage>
             {/* <img class="card-img-top" src={"/trade/".concat(props.resource).concat("-min.jpeg")} alt={"Image of ".concat(props.resource)}/> */}
             <div class="card-body">
                 <h5 class="card-title im-fell-font font-25">{props.resource}</h5>
