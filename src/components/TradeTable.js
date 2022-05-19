@@ -89,11 +89,11 @@ const TradeTable = (props) => {
         <div>
         <div class="card card-cont">
             <LazyLoadImage
-            effect="blur"
-            alt={"Image of ".concat(props.resource)}
-            height={200}
-            width={295}
-            src={"/trade/".concat(props.resource).concat("-min.jpeg")}>
+                effect="blur"
+                alt={"Image of ".concat(props.resource)}
+                height={200}
+                width={295}
+                src={"/trade/".concat(props.resource).concat(".jpeg")}>
             </LazyLoadImage>
             {/* <img class="card-img-top" src={"/trade/".concat(props.resource).concat("-min.jpeg")} alt={"Image of ".concat(props.resource)}/> */}
             <div class="card-body">
@@ -149,7 +149,7 @@ const TradeTable = (props) => {
                         <h6><strong>Your Offer</strong></h6>
                         <div class="side-units-div">
                             <input class="form-control" id="trade-request-qty"></input>
-                            <h6>Sols</h6>
+                            <h6>Sols per unit</h6>
                         </div>  
                     </div>
 

@@ -81,7 +81,7 @@
   /* TradeTable Modal */
   #trade-modal-title{
     padding-left: 0.5rem;
-    margin-bottom: 0rem;
+    margin-top: 0.5rem;
   }
   
   #trade-modal-title i{
@@ -131,7 +131,10 @@
   }
   .side-units-div input{
     margin-right:0.4rem;
-    
+  }
+
+  #trade-request-qty{
+    width:15rem;
   }
 
   /* Trade Request Alert */
