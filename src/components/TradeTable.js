@@ -12,10 +12,7 @@ const TradeTable = (props) => {
     const [show, setShow] = useState(false);
     // BUYER
     const [senderFaction, setSenderFaction] = useState(0);
-    const [senderResources, setSenderResources] = useState([]);
-    const [senderResourceQty,setSenderResourceQty] = useState(0); 
 
-    // Current quantity of resourced being requested
     const [desiredResourceQty,setDesiredResourceQty] = useState(0); 
     // 0 for unchecked, 1 for true match, -1 for false match
     const [keyMatch, setKeyMatch] = useState(0);
@@ -26,25 +23,10 @@ const TradeTable = (props) => {
     function numberWithCommas(x) {
         return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     }
-
-    const callResource = async (id) => {
-        if(id === 0) setSenderResources([]); 
-        try {
-            const res = await axios.get(`https://faction-backend.herokuapp.com/factions/${id}/resources/`);
-            var data = [...res.data];
-            setSenderResources(data); 
-        } catch(e) {
-            console.log(e);}
-        }
-    
     
     const handleSelectFaction = (event) => {
         setSenderFaction(event.target.value);
     }
-
-    useEffect(() => {
-        callResource(senderFaction);
-    }, [senderFaction])
 
     const handleButtonTrade = async() => {
         setShow(true)
@@ -82,7 +64,7 @@ const TradeTable = (props) => {
 
                 buyer_payment: event.target[2].value}
             try {
-                const req = await axios.post('https://faction-backend.herokuapp.com/submittrade', body).then((res) =>{
+                await axios.post('https://faction-backend.herokuapp.com/submittrade', body).then((res) =>{
                 if(res.status === 200){
                     setShow(false);
                     props.callback(true, props.faction);
@@ -101,7 +83,6 @@ const TradeTable = (props) => {
 
     useEffect(() => {
         setKeyMatch(0);
-        setSenderResourceQty(0); 
         setDesiredResourceQty(0);
         setSenderFaction(0);
     }, [show])
@@ -109,13 +90,13 @@ const TradeTable = (props) => {
     return (
         <div>
         <div class="card card-cont">
-            <LazyLoadImage
+            {/* <LazyLoadImage
             effect="blur"
             alt={"Image of ".concat(props.resource)}
             height={200}
             width={295}
             src={"/trade/".concat(props.resource).concat("-min.jpeg")}>
-            </LazyLoadImage>
+            </LazyLoadImage> */}
             {/* <img class="card-img-top" src={"/trade/".concat(props.resource).concat("-min.jpeg")} alt={"Image of ".concat(props.resource)}/> */}
             <div class="card-body">
                 <h5 class="card-title im-fell-font font-25">{props.resource}</h5>
