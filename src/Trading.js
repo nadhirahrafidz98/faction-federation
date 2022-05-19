@@ -62,8 +62,8 @@ const Trading = () => {
     } catch(e) {
         console.log(e);}}
 
-  const handleClick = (event) => {
-    const id = event.target.value; 
+  const handleClick = async (event) => {
+    const id = await event.target.value; 
     setSelectedFaction(id); 
     callResource(id);
     $('.trade-nav-btn').on('click', function(){

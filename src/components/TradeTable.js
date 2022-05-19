@@ -10,9 +10,7 @@ import { LazyLoadImage } from 'react-lazy-load-image-component';
 const TradeTable = (props) => {
 
     const [show, setShow] = useState(false);
-    // BUYER
     const [senderFaction, setSenderFaction] = useState(0);
-
     const [desiredResourceQty,setDesiredResourceQty] = useState(0); 
     // 0 for unchecked, 1 for true match, -1 for false match
     const [keyMatch, setKeyMatch] = useState(0);
