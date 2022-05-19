@@ -17,23 +17,19 @@ const Faction = (props) => {
     } catch(e) {
         console.log(e);
       }}
-  // getMotto(); 
 
   const callRequests = async () => {
       try {
-          console.log("Faction.js callRequest()")
           const res = await axios.get(`https://faction-backend.herokuapp.com/trades/${props.id}/`);
           var data = [...res.data];
           setTradeReqs(data);
-          console.log("Faction.js tradeReqs", tradeReqs);
       } catch(e) {
           console.log(e);
   }}
 
   useEffect(() => {
-    console.log("on mount")
     getMotto(); 
-    callRequests()
+    callRequests();
   }, [])
 
   const getFactionName = (id) => {
@@ -69,35 +65,36 @@ const Faction = (props) => {
 
           <div class="container double-col-cont">
             <div class="row">
-              <div class="col-sm col-6 col-margin-right">
+              <div class="col-sm col-5 col-margin-right">
               <Resources id={props.id}/>
               </div>
-              <div class="col-sm col-6 col-margin-left">
-              <Population id={props.id}/>
+              <div class="col-sm col-7 col-margin-left">
+                {/* <Population id={props.id}/> */}
+                <Coins id={props.id}/>
+                <div class="flex parent-trading-cont">
+                <h4 class={`component-font-${props.id}-style  title-font-${props.id}`}>Trade Requests <span><button class="btn btn-req" onClick={callRequests}><i class="fa-solid fa-arrows-rotate"></i></button></span></h4>
+                  <div class="trading-cont"> 
+                  {
+                    tradeReqs.length > 0 ? 
+                    tradeReqs.map((t, index) => {
+                      console.log(t);
+                      return(
+                            <TradeRequest 
+                            id={t._id}
+                            trade_id={t._id}
+                            buyer={getFactionName(t.buyer)} 
+                            sellerResource={t.seller_resource}
+                            sellerQuantity={t.seller_qty}
+                            buyerPayment={t.buyer_payment}
+                            callback = {callRequests}
+                          />
+                      );})
+                    : ""
+                  }
+                  </div>
+                </div>
               </div>
             </div>
-            <div class="row">
-            <Coins id={props.id}/>
-            </div>
-          </div>
-          <div class="container flex trading-cont">
-            <h4 class={`component-font-${props.id}-style  title-font-${props.id}`}>Trade Requests <span><button class="btn btn-req" onClick={callRequests}><i class="fa-solid fa-arrows-rotate"></i></button></span></h4> 
-            {
-              tradeReqs.length > 0 ? 
-              tradeReqs.map((t, index) => {
-                return(
-                      <TradeRequest 
-                      id={t._id}
-                      trade_id={t._id}
-                      buyer={getFactionName(t.buyer)} 
-                      sellerResource={t.seller_resource}
-                      sellerQuantity={t.seller_qty}
-                      buyerPayment={t.buyer_payment}
-                      callback = {callRequests}
-                    />
-                );})
-              : ""
-            }
           </div>
       </div>
     </div>

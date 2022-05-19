@@ -54,7 +54,7 @@ const TradeRequest = (props) => {
                 <div class="spectral-font">
                 <p class="quantity-p"><strong>Requesting for {props.sellerResource}</strong></p>
                 <p>Quantity: {numberWithCommas(props.sellerQuantity)} units</p>
-                <p class="quantity-p">Payment offered: <strong>{props.buyerPayment} Sols</strong></p>
+                <p class="quantity-p">Payment offered: <strong>{props.buyerPayment} Sols per unit</strong></p>
                 <button class="btn btn-sm btn-success" id={"accept".concat(props.id)} onClick={handleAccept}>Accept</button>
                 <button class="btn btn-sm btn-danger" id={"reject".concat(props.id)} onClick={handleReject}>Reject</button>
                 </div>

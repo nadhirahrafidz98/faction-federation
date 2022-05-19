@@ -195,9 +195,15 @@ body{
     width: 10rem;
     margin-right:0.5rem;
   }
+  
+  .parent-trading-cont{
+    height:80%;
+  }
 
   .trading-cont{
     padding-bottom: 2.5rem;
+    overflow: scroll;
+    max-height: 80%;
   }
   
 /* ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| Trading.js ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| */

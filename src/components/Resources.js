@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './styles.css';
 
@@ -23,7 +23,11 @@ const Resources = (props) => {
         return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     }
 
-    callResource();  
+    useEffect(() => {
+        callResource();  
+    }, [])
+
+
     return (
     <div class={`table-responsive body-font-${props.id}`}>
         <h4 class={`component-font-${props.id}-style  title-font-${props.id}`}>Resource List</h4>
