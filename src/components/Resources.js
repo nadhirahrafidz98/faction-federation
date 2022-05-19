@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './styles.css';
@@ -8,6 +7,10 @@ const Resources = (props) => {
 
     const [loading, setLoading] = useState(true);
     const [resources, setResource] = useState([]);
+
+    function numberWithCommas(x) {
+        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
 
     const callResource = async () => {
         try {
@@ -19,18 +22,15 @@ const Resources = (props) => {
             console.log(e);
     }}
 
-    function numberWithCommas(x) {
-        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-    }
-
     useEffect(() => {
         callResource();  
     }, [])
 
-
     return (
     <div class={`table-responsive body-font-${props.id}`}>
         <h4 class={`component-font-${props.id}-style  title-font-${props.id}`}>Resource List</h4>
+    {
+    loading ? <p>Loading...</p> :
     <table class="table table-hover resource-table">
     <thead>
         <tr>
@@ -38,9 +38,8 @@ const Resources = (props) => {
         <th scope="col">Quantity (Unit)</th>
         </tr>
     </thead>
-    <tbody>
-        {     
-        loading ? <p>Loading...</p> :
+    <tbody> 
+        {   
         resources.filter((resource) => parseInt(String(resource.rsrcQty)))
         .sort(function(first,second) {
             return second.rsrcQty - first.rsrcQty})
@@ -56,6 +55,7 @@ const Resources = (props) => {
         }
     </tbody>
     </table>
+    }
     </div>
     );
   }

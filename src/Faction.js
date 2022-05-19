@@ -1,19 +1,20 @@
 import './Faction.css';
 import React, { useState, useEffect } from 'react';
-import { Population } from './components/Population';
 import { Resources } from './components/Resources';
-import { Coins } from './components/Coins';
 import { TradeRequest } from './components/TradeRequest';
+// import { Population } from './components/Population';
 import axios from 'axios';
 
 const Faction = (props) => {
   const [motto, setMotto] = useState()
   const [tradeReqs, setTradeReqs] = useState([]);
+  const [coin, setCoin] = useState(0); 
 
-  const getMotto = async () => {
+  const getMottoCoins = async () => {
     try {
         const res = await axios.get(`https://faction-backend.herokuapp.com/factions/${props.id}/`);
         setMotto(res.data.motto);
+        setCoin(res.data.coins); 
     } catch(e) {
         console.log(e);
       }}
@@ -21,14 +22,21 @@ const Faction = (props) => {
   const callRequests = async () => {
       try {
           const res = await axios.get(`https://faction-backend.herokuapp.com/trades/${props.id}/`);
+          const res_coin = await axios.get(`https://faction-backend.herokuapp.com/factions/${props.id}/`);
           var data = [...res.data];
           setTradeReqs(data);
+          setCoin(res_coin.data.coins); 
+          console.log("Coin total", coin);
       } catch(e) {
           console.log(e);
   }}
 
+  function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  }
+
   useEffect(() => {
-    getMotto(); 
+    getMottoCoins(); 
     callRequests();
   }, [])
 
@@ -70,14 +78,15 @@ const Faction = (props) => {
               </div>
               <div class="col-sm col-7 col-margin-left">
                 {/* <Population id={props.id}/> */}
-                <Coins id={props.id}/>
+                <div id="coins-div">
+                  <h3 class={`component-font-${props.id}-style  title-font-${props.id}`}>Faction Treasury: <span class={`coin-font-style body-font-${props.id}`}>{numberWithCommas(coin)} Sols</span></h3>
+                </div>
                 <div class="flex parent-trading-cont">
                 <h4 class={`component-font-${props.id}-style  title-font-${props.id}`}>Trade Requests <span><button class="btn btn-req" onClick={callRequests}><i class="fa-solid fa-arrows-rotate"></i></button></span></h4>
                   <div class="trading-cont"> 
                   {
                     tradeReqs.length > 0 ? 
                     tradeReqs.map((t, index) => {
-                      console.log(t);
                       return(
                             <TradeRequest 
                             id={t._id}
