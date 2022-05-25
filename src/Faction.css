@@ -149,43 +149,42 @@ body{
   
   /* Stretch main-cont to entire viewport for background purpose */
   .main-cont{
-    /* height:100%; */
     padding: 3.1rem 4rem 5rem 4rem;
   }
 
   /* Analyst bg */
   .main-bg-1{
-    /* background-color: blue; */
+    min-height: 100%;
     background-image: url("/public/background/1-background.png");
     background-repeat: repeat-y repeat-x;
   }
   .main-bg-2{
-    /* background: rgb(193,248,207); */
+    min-height: 100%;
     background-image: url("/public/background/2-background.png");
     background-repeat: repeat-y repeat-x;
   }
 
   .main-bg-3{
-    /* background: rgb(193,248,207); */
+    min-height: 100%;
     background-image: url("/public/background/3-background.png");
     background-repeat: repeat;
   }
 
   .main-bg-4{
-    /* background: rgb(193,248,207); */
+    min-height: 100%;
     background-image: url("/public/background/4-background.png");
     background-repeat: repeat-y repeat-x;
   }
 
   .main-bg-5{
-    /* background: rgb(193,248,207); */
+    min-height: 100%;
     background-image: url("/public/background/5-background.png");
     background-repeat: repeat-y repeat-x;
   }
 
   .solo-page-cont{
-    padding: 1rem 3rem 0rem 3rem;
-    margin-bottom: 1rem;
+    padding: 1rem 3rem 1rem 3rem;
+    margin-bottom: 1.5rem;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     border-radius: 1rem;
     background-color: white;

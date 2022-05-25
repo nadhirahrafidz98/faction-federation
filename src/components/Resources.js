@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { io } from "socket.io-client";
 import './styles.css';
 
 // prop is faction ID
@@ -12,8 +13,23 @@ const Resources = (props) => {
         return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     }
 
+    const broadcast = (resources) => {
+        const factionSocket = io(`https://faction-backend.herokuapp.com/faction${props.id}`, { autoConnect: true });
+    
+        factionSocket.on("resource", (args) => {
+            setLoading(true);
+            setResource([...args]); 
+            setLoading(false);
+        });
+    
+        factionSocket.on('connect_error', ()=>{
+          setTimeout(()=>factionSocket.connect(),5000)
+        })
+    }
+    
     const callResource = async () => {
         try {
+            console.log("CALLING");
             const res = await axios.get(`https://faction-backend.herokuapp.com/factions/${props.id}/resources/`);
             var data = [...res.data];
             setResource(data); 
@@ -23,7 +39,8 @@ const Resources = (props) => {
     }}
 
     useEffect(() => {
-        callResource();  
+        callResource(); 
+        broadcast(resources); 
     }, [])
 
     return (
@@ -61,4 +78,3 @@ const Resources = (props) => {
   }
 
 export {Resources};
-

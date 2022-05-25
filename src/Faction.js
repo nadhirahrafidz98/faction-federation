@@ -4,11 +4,29 @@ import { Resources } from './components/Resources';
 import { TradeRequest } from './components/TradeRequest';
 // import { Population } from './components/Population';
 import axios from 'axios';
+import { io } from "socket.io-client";
 
 const Faction = (props) => {
   const [motto, setMotto] = useState()
   const [tradeReqs, setTradeReqs] = useState([]);
   const [coin, setCoin] = useState(0); 
+
+  const broadcast = () => {
+    const factionSocket = io(`https://faction-backend.herokuapp.com/faction${props.id}`, { autoConnect: true });
+    
+    factionSocket.on("faction-handshake", (...args) => {
+      console.log(args);
+    });
+
+    factionSocket.on("coin", (...args) => {
+      console.log("Updated coins", args[1]);
+      setCoin(args[1].coins); 
+    });
+
+    factionSocket.on('connect_error', ()=>{
+      setTimeout(()=>factionSocket.connect(),5000)
+    })
+  }
 
   const getMottoCoins = async () => {
     try {
@@ -26,7 +44,6 @@ const Faction = (props) => {
           var data = [...res.data];
           setTradeReqs(data);
           setCoin(res_coin.data.coins); 
-          console.log("Coin total", coin);
       } catch(e) {
           console.log(e);
   }}
@@ -38,6 +55,7 @@ const Faction = (props) => {
   useEffect(() => {
     getMottoCoins(); 
     callRequests();
+    broadcast();
   }, [])
 
   const getFactionName = (id) => {
@@ -79,7 +97,7 @@ const Faction = (props) => {
               <div class="col-sm col-7 col-margin-left">
                 {/* <Population id={props.id}/> */}
                 <div id="coins-div">
-                  <h3 class={`component-font-${props.id}-style  title-font-${props.id}`}>Faction Treasury: <span class={`coin-font-style body-font-${props.id}`}>{numberWithCommas(coin)} Sols</span></h3>
+                  <h3 class={`component-font-${props.id}-style  title-font-${props.id}`}>Treasury: <span class={`coin-font-style body-font-${props.id}`}>{numberWithCommas(coin)} Sols</span></h3>
                 </div>
                 <div class="flex parent-trading-cont">
                 <h4 class={`component-font-${props.id}-style  title-font-${props.id}`}>Trade Requests <span><button class="btn btn-req" onClick={callRequests}><i class="fa-solid fa-arrows-rotate"></i></button></span></h4>
