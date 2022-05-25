@@ -29,7 +29,6 @@ const Resources = (props) => {
     
     const callResource = async () => {
         try {
-            console.log("CALLING");
             const res = await axios.get(`https://faction-backend.herokuapp.com/factions/${props.id}/resources/`);
             var data = [...res.data];
             setResource(data); 
