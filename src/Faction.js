@@ -106,7 +106,8 @@ const Faction = (props) => {
                     tradeReqs.length > 0 ? 
                     tradeReqs.map((t, index) => {
                       return(
-                            <TradeRequest 
+                            <TradeRequest
+                            key={t._id}
                             id={t._id}
                             trade_id={t._id}
                             buyer={getFactionName(t.buyer)} 
