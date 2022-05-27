@@ -116,7 +116,7 @@ const Faction = (props) => {
                             callback = {callRequests}
                           />
                       );})
-                    : ""
+                    : <p>There are no incoming trade requests</p>
                   }
                   </div>
                 </div>
