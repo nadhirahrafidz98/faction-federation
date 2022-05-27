@@ -2,7 +2,6 @@ import './Faction.css';
 import React, { useState, useEffect } from 'react';
 import { Resources } from './components/Resources';
 import { TradeRequest } from './components/TradeRequest';
-// import { Population } from './components/Population';
 import axios from 'axios';
 import { io } from "socket.io-client";
 
