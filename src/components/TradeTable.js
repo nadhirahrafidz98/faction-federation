@@ -15,7 +15,7 @@ const TradeTable = (props) => {
     // 0 for unchecked, 1 for true match, -1 for false match
     const [keyMatch, setKeyMatch] = useState(0);
 
-    const factions = [["", 0], ["Rivia",1], ["Althea",2], ["Sudaria",3], ["Redania",4], ["Aeri",5]];
+    const factions = [["", 0], ["Rivia",1], ["Althea",2], ["Elirea",3], ["Redania",4], ["Panea",5]];
     var modalTitle = "Trade request to ".concat(factions[parseInt(props.faction)][0]); 
 
     function numberWithCommas(x) {
@@ -95,7 +95,6 @@ const TradeTable = (props) => {
                 width={295}
                 src={"/trade/".concat(props.resource).concat(".jpeg")}>
             </LazyLoadImage>
-            {/* <img class="card-img-top" src={"/trade/".concat(props.resource).concat("-min.jpeg")} alt={"Image of ".concat(props.resource)}/> */}
             <div class="card-body">
                 <h5 class="card-title im-fell-font font-25">{props.resource}</h5>
                 <h6 class="spectral-font">{`Selling: ${numberWithCommas(props.quantity)} units`}</h6>
