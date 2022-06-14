@@ -3,7 +3,6 @@ import React, { useState, useEffect } from 'react';
 import { Resources } from './components/Resources';
 import { TradeRequest } from './components/TradeRequest';
 import axios from 'axios';
-import $ from 'jquery';
 import { io } from "socket.io-client";
 
 const Faction = (props) => {
