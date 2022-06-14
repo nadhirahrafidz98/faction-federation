@@ -16,6 +16,7 @@ function App(props) {
         <Route path="/elirea24" element={ <Faction name="Elirea" id="3"/>}/>
         <Route path="/redania2" element={ <Faction name="Redania" id="4"/>}/>
         <Route path="/panea14" element={ <Faction name="Panea" id="5"/>}/>
+        <Route path="/factious0" element={ <Faction name="The Factious" id="6"/>}/>
         <Route path="/trade" element={ <Trading/>}/>
       </Routes>
   </Router>

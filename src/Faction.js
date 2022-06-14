@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { Resources } from './components/Resources';
 import { TradeRequest } from './components/TradeRequest';
 import axios from 'axios';
+import $ from 'jquery';
 import { io } from "socket.io-client";
 
 const Faction = (props) => {
@@ -98,10 +99,11 @@ const Faction = (props) => {
                 <div id="coins-div">
                   <h3 class={`component-font-${props.id}-style  title-font-${props.id}`}>Treasury: <span class={`coin-font-style body-font-${props.id}`}>{numberWithCommas(coin)} Sols</span></h3>
                 </div>
+
                 <div class="flex parent-trading-cont">
-                <h4 class={`component-font-${props.id}-style  title-font-${props.id}`}>Trade Requests <span><button class="btn btn-req" onClick={callRequests}><i class="fa-solid fa-arrows-rotate"></i></button></span></h4>
-                  <div class="trading-cont"> 
-                  {
+                <h4 class={`component-font-${props.id}-style  title-font-${props.id}`}>Trade <span><button class="btn btn-req" onClick={callRequests}><i class="fa-solid fa-arrows-rotate"></i></button></span></h4>           
+                <div class="trading-cont"> 
+                    {
                     tradeReqs.length > 0 ? 
                     tradeReqs.map((t, index) => {
                       return(
@@ -118,7 +120,7 @@ const Faction = (props) => {
                       );})
                     : <p>There are no incoming trade requests</p>
                   }
-                  </div>
+                </div>
                 </div>
               </div>
             </div>
