@@ -15,7 +15,7 @@ const TradeTable = (props) => {
     // 0 for unchecked, 1 for true match, -1 for false match
     const [keyMatch, setKeyMatch] = useState(0);
 
-    const factions = [["", 0], ["Rivia",1], ["Althea",2], ["Elirea",3], ["Redania",4], ["Panea",5]];
+    const factions = [["", 0], ["Rivia",1], ["Althea",2], ["Elirea",3], ["Redania",4], ["Panea",5], ["The Factious", 6]];
     var modalTitle = "Trade request to ".concat(factions[parseInt(props.faction)][0]); 
 
     function numberWithCommas(x) {

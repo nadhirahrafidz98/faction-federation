@@ -10,7 +10,7 @@ const Trading = () => {
   const [showAlert, setShowAlert] = useState(false);
   const [alertFaction, setAlertFaction] = useState("");
 
-  const factions = [["Rivia",1], ["Althea",2], ["Elirea",3], ["Redania",4], ["Panea",5]];
+  const factions = [["Rivia",1], ["Althea",2], ["Elirea",3], ["Redania",4], ["Panea",5], ["The Factious", 6]];
 
   const marketValue = (resource) =>{
     var market_val = 0; 
