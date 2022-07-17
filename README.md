@@ -17,9 +17,9 @@ Continuous deployment tested and successful (17/7/2022).
 [Heroku App Dashboard](https://dashboard.heroku.com/apps/faction-federation)
 
 ## Changing Factions
-==Important: Faction Names and ID pairing must be correct== 
+**Important: Faction Names and ID pairing must be correct**
 
-Single source of truth is: MongoDB factions Collection (factionId and factionName)
+Single source of truth: MongoDB factions Collection (factionId and factionName)
 
 ### Change Faction Names, Motto & Trade Key via MongoDB
 1. Login to MongoDB (nadhirahrafidz.work@gmail.com)
@@ -49,7 +49,10 @@ case [factionID]:
 ### Faction Names in TradeTable.js
 Line 18 
 
-pattern: ``["factionName", factionId]``
+pattern: 
+```
+["factionName", factionId]
+```
 
 ### Faction Background
 
@@ -57,13 +60,13 @@ pattern: ``["factionName", factionId]``
 
 1. Navigate to faction_frontend/public/background
 2. Naming convention: ``[factionId]-background.png``
-3. Replace background img with new background img and ==ensure naming convention and filetype is right==. 
+3. Replace background img with new background img and **ensure naming convention and filetype is right** 
 
 ### Faction Logo
 
 1. Navigate to faction_frontend/public/logo
 2. Naming convention: `[factionId].png``
-3. Replace logo img with new logo img and ==ensure naming convention and filetype is right==. 
+3. Replace logo img with new logo img and =**=ensure naming convention and filetype is right** 
 
 
 
