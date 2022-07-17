@@ -57,18 +57,21 @@ const Faction = (props) => {
     broadcast();
   }, [])
 
+// CHANGE IF FACTION NAME CHANGES
   const getFactionName = (id) => {
     switch(id){
       case 1:
-        return "Rivia";
+        return "Imora";
       case 2: 
-        return "Althea";
+        return "Darien";
       case 3:
-        return "Sudaria";
+        return "Shangra";
       case 4: 
-        return "Redania";
+        return "Delos";
       case 5:
-        return "Aeri";
+        return "Elysia";
+      case 6: 
+        return "Factious"
       default:
         return "";
     }}
@@ -94,7 +97,7 @@ const Faction = (props) => {
               <Resources id={props.id}/>
               </div>
               <div class="col-sm col-7 col-margin-left">
-                {/* <Population id={props.id}/> */}
+      
                 <div id="coins-div">
                   <h3 class={`component-font-${props.id}-style  title-font-${props.id}`}>Treasury: <span class={`coin-font-style body-font-${props.id}`}>{numberWithCommas(coin)} Sols</span></h3>
                 </div>

@@ -1,70 +1,70 @@
-# Getting Started with Create React App
+# Faction Federation Fronted
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Frontend for Faction Federation (MERN stack) with Socket.io to listen in to broadcasts from server side.
 
-## Available Scripts
+Made for 6 Factions (6th Faction is Factious). 
 
-In the project directory, you can run:
+## Start development server on localhost:3000
+```
+npm start
+```
 
-### `npm start`
+## Deployment
+Deployed to heroku using GitHub automatic deployment. 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Continuous deployment tested and successful (17/7/2022). 
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+[Heroku App Dashboard](https://dashboard.heroku.com/apps/faction-federation)
 
-### `npm test`
+## Changing Factions
+==Important: Faction Names and ID pairing must be correct== 
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Single source of truth is: MongoDB factions Collection (factionId and factionName)
 
-### `npm run build`
+### Change Faction Names, Motto & Trade Key via MongoDB
+1. Login to MongoDB (nadhirahrafidz.work@gmail.com)
+2. Navigate to ==Maybank== project
+3. Database > Browse Collections > Factions
+4. Make changes to ``factionName`` (take note the corresponding factionId of each Faction)
+5. Make changes to ``motto`` field. 
+6. (Optional) Change trade key (password) 
+7. Update document
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Routes
+Routes can be changed in **faction_frontend/src/App.js**
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Ensure Faction and id prop match (based on MongoDB pairing)
+1. Change path of each route. Pattern is [FACTION NAME][BCD PIC's birthday date]
+2. Change Faction component's name prop
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Faction Names in Faction.js
+Lines 61 - 75
 
-### `npm run eject`
+pattern: 
+```
+case [factionID]:
+    return [factionName]
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Faction Names in TradeTable.js
+Line 18 
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+pattern: ``["factionName", factionId]``
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Faction Background
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+**Important**: compress the images to improve website's performance [Image Compressor](https://imagecompressor.com/)
 
-## Learn More
+1. Navigate to faction_frontend/public/background
+2. Naming convention: ``[factionId]-background.png``
+3. Replace background img with new background img and ==ensure naming convention and filetype is right==. 
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Faction Logo
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+1. Navigate to faction_frontend/public/logo
+2. Naming convention: `[factionId].png``
+3. Replace logo img with new logo img and ==ensure naming convention and filetype is right==. 
 
-### Code Splitting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Analyzing the Bundle Size
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
