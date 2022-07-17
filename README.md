@@ -23,7 +23,7 @@ Single source of truth: MongoDB factions Collection (factionId and factionName)
 
 ### Change Faction Names, Motto & Trade Key via MongoDB
 1. Login to MongoDB (nadhirahrafidz.work@gmail.com)
-2. Navigate to ==Maybank== project
+2. Navigate to ``Maybank`` project
 3. Database > Browse Collections > Factions
 4. Make changes to ``factionName`` (take note the corresponding factionId of each Faction)
 5. Make changes to ``motto`` field. 
