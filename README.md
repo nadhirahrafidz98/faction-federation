@@ -54,6 +54,18 @@ pattern:
 ["factionName", factionId]
 ```
 
+### Faction Names in Trading.js
+Line 18 
+
+pattern: 
+```
+["factionName", factionId]
+```
+
+### Market value of resources
+Lines 15-55
+
+
 ### Faction Background
 
 **Important**: compress the images to improve website's performance [Image Compressor](https://imagecompressor.com/)
